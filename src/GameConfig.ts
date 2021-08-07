@@ -6,6 +6,16 @@ export const Parametros = {
         altura: 1200,
         largura: 850,
     },
+    barra:{
+        paddingVertical: 20,
+        barrasKey: [
+            'BarraDeEnergia',
+            'BarraDeFelicidade',
+            'BarraDeFome',
+            'BarraDeVida',
+        ],
+        tamanhoDaBarra: 150
+    }
 }
 
 export const config: Phaser.Types.Core.GameConfig= {
@@ -19,5 +29,5 @@ export const config: Phaser.Types.Core.GameConfig= {
         default: 'arcade',
         arcade:{
         }
-    }
+    },
 }
