@@ -1,6 +1,4 @@
-# PhaserPong!
+# ProjetoZuzu!
 
 ### To-do List
-
-- [ ] Melhorar a IA
 

@@ -27,7 +27,7 @@ export class Barra extends Phaser.GameObjects.Sprite{
     /**
      * @param y: Numero entre 1 e 140
     */
-    async setBarraTamanho(y: number){
+    setBarraTamanho(y: number){
         this.status.setScale(1, -y)
     }
 }

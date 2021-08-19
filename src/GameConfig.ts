@@ -1,5 +1,6 @@
 import Phaser from "phaser"
-import { Main } from "./main"
+import { CenaQuarto } from "./scenes/CenaQuarto"
+import {CenaCozinha} from './scenes/CenaCozinha'
 
 export const Parametros = {
     tela: {
@@ -9,10 +10,10 @@ export const Parametros = {
     barra:{
         paddingVertical: 20,
         barrasKey: [
-            'BarraDeEnergia',
-            'BarraDeFelicidade',
             'BarraDeFome',
+            'BarraDeFelicidade',
             'BarraDeVida',
+            'BarraDeEnergia',
         ],
         tamanhoDaBarra: 150
     }
@@ -21,10 +22,13 @@ export const Parametros = {
 export const config: Phaser.Types.Core.GameConfig= {
     type: Phaser.AUTO,
     title: 'ProjetoZuzu',
-    backgroundColor: '#ff000f',
     width: Parametros.tela.largura,
     height: Parametros.tela.altura,
-    scene: [Main],
+    backgroundColor: '#fff',
+    scene: [
+        CenaQuarto, 
+        CenaCozinha
+    ],
     physics:{
         default: 'arcade',
         arcade:{

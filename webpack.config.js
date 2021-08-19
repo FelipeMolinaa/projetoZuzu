@@ -1,20 +1,22 @@
 const path = require('path');
 module.exports = {
-  entry: './src/app.ts',
+  entry: {
+    app: './src/app',
+  },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
-      }
+      },
     ]
   },
   resolve: {
-    extensions: [ '.ts', '.tsx', '.js' ]
+    extensions: [ '.ts', '.tsx', '.js' ],
   },
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist', 'src', 'js')
   },
   mode: 'development'
