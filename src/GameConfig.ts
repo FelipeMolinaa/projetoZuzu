@@ -1,6 +1,6 @@
 import Phaser from "phaser"
 import { CenaQuarto } from "./scenes/CenaQuarto"
-import {CenaCozinha} from './scenes/CenaCozinha'
+import {CenaCozinha} from './scenes/CenasCozinha/CenaCozinha'
 
 export const Parametros = {
     tela: {
@@ -26,8 +26,8 @@ export const config: Phaser.Types.Core.GameConfig= {
     height: Parametros.tela.altura,
     backgroundColor: '#fff',
     scene: [
+        CenaCozinha,
         CenaQuarto, 
-        CenaCozinha
     ],
     physics:{
         default: 'arcade',

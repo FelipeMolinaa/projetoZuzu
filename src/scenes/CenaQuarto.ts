@@ -39,7 +39,7 @@ export class CenaQuarto extends Phaser.Scene{
             repeat: 0,
         });
 
-        this.SpritePocoyoQuarto = this.add.sprite(40, 150, 'pocoyoQuartoSpriteSheet').play('PocoyoDormindo').setOrigin(0);
+        this.SpritePocoyoQuarto = this.add.sprite(40, 150, 'pocoyoQuartoSpriteSheet').setScale(1).play('PocoyoDormindo').setOrigin(0);
 
         this.botaoDespertador = this.add.sprite((Parametros.tela.largura /2) - 100, Parametros.tela.altura - 380, 'botaoDespertador').setOrigin(0);
         this.botaoDespertador.setInteractive();
