@@ -1,6 +1,7 @@
 import Phaser from "phaser"
 import { CenaQuarto } from "./scenes/CenaQuarto"
 import {CenaCozinha} from './scenes/CenasCozinha/CenaCozinha'
+import {CenaJogoCozinha} from './scenes/CenasCozinha/CenaJogoCozinha'
 
 export const Parametros = {
     tela: {
@@ -16,6 +17,9 @@ export const Parametros = {
             'BarraDeEnergia',
         ],
         tamanhoDaBarra: 150
+    },
+    botaoCentral:{
+        tamanho: 150
     }
 }
 
@@ -26,9 +30,12 @@ export const config: Phaser.Types.Core.GameConfig= {
     height: Parametros.tela.altura,
     backgroundColor: '#fff',
     scene: [
+        CenaJogoCozinha,
+        CenaQuarto,
         CenaCozinha,
-        CenaQuarto, 
+        
     ],
+
     physics:{
         default: 'arcade',
         arcade:{

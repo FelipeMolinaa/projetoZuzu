@@ -15,11 +15,11 @@ export class InterfaceHelper{
         this.NomeCena = nomeCena;
         this.Setas = setas;
 
-        cena.load.image('BarraDeEnergia', './src/sprites/energiaBarra.png')
-        cena.load.image('BarraDeFelicidade', './src/sprites/felicidadeBarra.png')
-        cena.load.image('BarraDeFome', './src/sprites/fomeBarra.png')
-        cena.load.image('BarraDeVida', './src/sprites/vidaBarra.png')
-        cena.load.image('Seta', './src/sprites/setaTrocaFase.png');
+        cena.load.image('BarraDeEnergia', './src/assets/sprites/energiaBarra.png')
+        cena.load.image('BarraDeFelicidade', './src/assets/sprites/felicidadeBarra.png')
+        cena.load.image('BarraDeFome', './src/assets/sprites/fomeBarra.png')
+        cena.load.image('BarraDeVida', './src/assets/sprites/vidaBarra.png')
+        cena.load.image('Seta', './src/sprites/assets/setaTrocaFase.png');
     }
 
     GeraInterface(){

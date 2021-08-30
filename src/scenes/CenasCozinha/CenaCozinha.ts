@@ -1,11 +1,13 @@
 import Phaser from "phaser";
 import { InterfaceHelper } from "../../helpers/interfaceHelper";
 import { Barra } from "../../models/Barras";
+import { BotaoCentral } from "../../models/BotaoCentral";
 
 export class CenaCozinha extends Phaser.Scene{
     interfaceHelper: InterfaceHelper;
     tituloCena: Phaser.GameObjects.Text;
     grupoDeBarras: Barra[] = [];
+    botaoCentral: BotaoCentral;
 
     constructor(){
         super({
@@ -14,13 +16,21 @@ export class CenaCozinha extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image('fundoCozinha', './src/sprites/fundoCozinha.png')
+        this.load.image('botaoCentralCozinha', './src/assets/sprites/botaoCentralCozinha.png')
         this.interfaceHelper = new InterfaceHelper(this, 'Cozinha', false);
     }
 
     create(){
-        this.add.image(0,0,'fundoCozinha').setOrigin(0);
         this.interfaceHelper.GeraInterface();
+
+        this.botaoCentral = new BotaoCentral(this, 280, 'botaoCentralCozinha');
+
+        //animação inicial
+
+        this.botaoCentral.onClick(()=>{
+            //animação para o minigame
+            //inicia minigame
+        }, false)
 
         this.interfaceHelper.grupoDeBarras[0].setBarraTamanho(20)
         this.interfaceHelper.grupoDeBarras[1].setBarraTamanho(40)
