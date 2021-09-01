@@ -3,24 +3,23 @@ import { Parametros } from "../../GameConfig";
 import {PopUp} from '../../helpers/PopUp'
 
 export class CenaJogoCozinha extends Phaser.Scene{
-    xCesta = 100;
-    yCesta = Parametros.tela.altura - 200;
     scaleCesta = 0.9
-    frutas: Phaser.Physics.Arcade.Group;
+    velocidadeCesto = 300;
     tempoSurgimentoFruta = 2000;
+    pontos = 0;
+    jogoPausado = true;
+    tempoDefault = 10;
+    
+    frutas: Phaser.Physics.Arcade.Group;
     cesto: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
     cestoSFundo: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
-    velocidadeCesto = 300;
     coletorDeFrutas: Phaser.GameObjects.Rectangle;
     pontuacaoTexto: Phaser.GameObjects.Text;
-    pontos = 0;
     tempo: number;
     tempoTexto: Phaser.GameObjects.Text;
-    jogoPausado = true;
     popUpInicio: PopUp;
     popUpFim: PopUp;
     emitter: Phaser.Events.EventEmitter;
-    tempoDefault = 10;
     incrementaTempo: Phaser.Time.TimerEvent;
     geraFrutas: Phaser.Time.TimerEvent;
 
@@ -48,9 +47,9 @@ export class CenaJogoCozinha extends Phaser.Scene{
             this.pontos = 0
             this.jogoPausado = false;
             this.popUpInicio.limpaPopUp();
-            this.cestoSFundo = this.physics.add.sprite(this.xCesta, this.yCesta, 'cestoSFundo').setOrigin(0).setScale(this.scaleCesta).setCollideWorldBounds(true);
-            this.cesto = this.physics.add.sprite(this.xCesta, this.yCesta, 'cesto').setOrigin(0).setScale(this.scaleCesta).setCollideWorldBounds(true);
-            this.coletorDeFrutas = this.add.rectangle(this.xCesta + 20, this.yCesta + 50, this.cesto.width - 60, 1, 0x000).setOrigin(0)
+            this.cesto = this.physics.add.sprite(100, Parametros.tela.altura - 200, 'cesto').setOrigin(0).setScale(this.scaleCesta).setCollideWorldBounds(true);
+            this.cestoSFundo = this.physics.add.sprite(this.cesto.x, this.cesto.y, 'cestoSFundo').setOrigin(0).setScale(this.scaleCesta).setCollideWorldBounds(true);
+            this.coletorDeFrutas = this.add.rectangle(this.cesto.x + 20, this.cesto.y + 50, this.cesto.width - 60, 1).setOrigin(0)
             this.physics.add.existing(this.coletorDeFrutas)
 
             //@ts-ignore
@@ -106,7 +105,8 @@ export class CenaJogoCozinha extends Phaser.Scene{
             this.cesto.destroy();
             this.cestoSFundo.destroy();
             this.frutas.getChildren().forEach((fruta)=>{
-                fruta.destroy();
+                var Fruta: any = fruta
+                Fruta.disableBody(true, true)
             })
             this.pontuacaoTexto.destroy();
             this.coletorDeFrutas.destroy();
@@ -138,7 +138,7 @@ export class CenaJogoCozinha extends Phaser.Scene{
         this.popUpInicio.gera(textoPopUp, botaoSair, ()=>{
             this.emitter.emit('JogoDespausado')
         }, ()=>{
-            console.log('envia para cozinha')
+            this.scene.start('CenaCozinha')
         }, {
             ajusteBotao: 100,
             ajusteFundo: 70,
@@ -159,7 +159,7 @@ export class CenaJogoCozinha extends Phaser.Scene{
 
     criaFruta() {
         var Xfruta = Phaser.Math.Between(100, Parametros.tela.largura - 100);
-        var fruta = this.frutas.create(Xfruta, -60, 'fruta').setScale(0.3).setVelocityY(300)
+        var fruta = this.frutas.create(Xfruta, -40, 'fruta').setScale(0.3).setVelocityY(300)
         var rotacao = Phaser.Math.Between(-50, 50);
         fruta.setAngularAcceleration(rotacao)
         fruta.depth = 2

@@ -29,6 +29,7 @@ export class CenaCozinha extends Phaser.Scene{
 
         this.botaoCentral.onClick(()=>{
             //animação para o minigame
+            this.scene.start('CenaJogoCozinha');
             //inicia minigame
         }, false)
 

@@ -19,7 +19,7 @@ export class InterfaceHelper{
         cena.load.image('BarraDeFelicidade', './src/assets/sprites/felicidadeBarra.png')
         cena.load.image('BarraDeFome', './src/assets/sprites/fomeBarra.png')
         cena.load.image('BarraDeVida', './src/assets/sprites/vidaBarra.png')
-        cena.load.image('Seta', './src/sprites/assets/setaTrocaFase.png');
+        cena.load.image('Seta', './src/assets/sprites/setaTrocaFase.png');
     }
 
     GeraInterface(){

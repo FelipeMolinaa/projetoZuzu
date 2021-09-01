@@ -30,10 +30,9 @@ export const config: Phaser.Types.Core.GameConfig= {
     height: Parametros.tela.altura,
     backgroundColor: '#fff',
     scene: [
-        CenaJogoCozinha,
         CenaQuarto,
         CenaCozinha,
-        
+        CenaJogoCozinha,
     ],
 
     physics:{

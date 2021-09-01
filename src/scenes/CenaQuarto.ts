@@ -20,7 +20,6 @@ export class CenaQuarto extends Phaser.Scene{
 
     preload(){
         this.load.spritesheet('pocoyoQuartoSpriteSheet', './src/assets/sprites/spritesPocoyoQuarto.png', { frameWidth: 500, frameHeight: 400, endFrame: 67 })
-        this.load.image('fundoQuarto', './src/assets/sprites/fundoQuarto.png');
         this.load.image('botaoDespertador', './src/assets/sprites/botaoDespertador.png')
         this.interfaceHelper = new InterfaceHelper(this, 'Quarto', false);
     }

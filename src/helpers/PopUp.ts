@@ -22,7 +22,7 @@ export class PopUp{
 
         cena.load.image('FundoPopup', `./src/assets/sprites/fundopopup.png`);
         cena.load.image('LogoJogo', `./src/assets/sprites/${pathLogo}.png`);
-        cena.load.image('BotaoJogar', './src/assets/sprites/botaojogar.png');
+        cena.load.image('botaoSprite', './src/assets/sprites/botaojogar.png');
     }
 
     gera(textoPopUp: string, botaoSair: boolean, funcaoBotaoJogar: Function, funcaoBotaoSair: Function, ajustes: Ajustes){
@@ -41,23 +41,28 @@ export class PopUp{
         this.texto.setPosition(this.fundo.x - this.texto.width /2,(this.fundo.y - this.fundo.height /2) + ajustes.ajusteTexto);
 
         if(botaoSair){
-            this.botaoJogar = this.geraBotao(this.fundo, 'BotaoJogar',ajustes.ajusteBotao,  2.5, funcaoBotaoJogar)
-            this.botaoSair =this.geraBotao(this.fundo, 'BotaoSair',ajustes.ajusteBotao,  1, funcaoBotaoSair)
+            this.botaoJogar = this.geraBotao(this.fundo, 'jogar',ajustes.ajusteBotao,  2.5, funcaoBotaoJogar).setTint(0x22CA47)
+            this.botaoSair =this.geraBotao(this.fundo, 'sair',ajustes.ajusteBotao,  1, funcaoBotaoSair).setTint(0xFF2E2E)
         }else{
-            this.botaoJogar = this.geraBotao(this.fundo, 'BotaoJogar',ajustes.ajusteBotao,  1.5, funcaoBotaoJogar)
+            this.botaoJogar = this.geraBotao(this.fundo, 'jogar',ajustes.ajusteBotao,  1.5, funcaoBotaoJogar).setTint(0x22CA47)
         }
     }
 
-    private geraBotao(fundo: Phaser.GameObjects.Image, keyBotao: string, ajusteBotao: number,  multiploAjuste: number, funcao: Function){
-        var botao = this.cena.add.image(0,0, keyBotao);
+    private geraBotao(fundo: Phaser.GameObjects.Image, textoBotao: string, ajusteBotao: number,  multiploAjuste: number, funcao: Function){
+        var botao = this.cena.add.image(0,0, 'botaoSprite');
         botao.setPosition(fundo.x, (fundo.y + fundo.height /2) - ajusteBotao * multiploAjuste);
+        var texto = this.cena.add.text(0,0, textoBotao, {
+            fontFamily: 'pocoyo-tv',
+            fontSize: '50px'
+        });
+        texto.setPosition(botao.x - texto.width /2, botao.y - texto.height/2);
         botao.setInteractive();
         botao.on('pointerdown',()=>{
             botao.setScale(0.99)
-            funcao();
         })
         botao.on('pointerup',()=>{
             botao.setScale(1)
+            funcao();
         }) 
 
         return botao
