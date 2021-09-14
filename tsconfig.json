@@ -68,5 +68,5 @@
   },
   "include": [
     "src/*"
-, "src/scenes/CenaQuarto.js", "src/helpers/interfaceHelper.ts"  ]
+, "src/scenes/CenaQuarto.js", "src/Objects/interfaceHelper.ts"  ]
 }

@@ -1,10 +1,10 @@
 import Phaser from "phaser";
 
-export class cenaQuarto extends Phaser.Scene{
+export class cenaBanheiro extends Phaser.Scene{
 
     constructor(){
         super({
-            key: 'Quarto'
+            key: 'CenaBanheiro'
         })
     }
 

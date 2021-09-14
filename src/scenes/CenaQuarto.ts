@@ -1,8 +1,8 @@
 import Phaser from "phaser";
-import { Parametros } from "../GameConfig";
-import { InterfaceHelper } from "../helpers/interfaceHelper";
-import {Barra} from '../models/Barras';
-import {BotaoCentral} from '../models/BotaoCentral'
+import { Parametros, parametrosProximaFase } from "../GameConfig";
+import { InterfaceHelper } from "../Objects/interfaceHelper";
+import {Barra} from '../Objects/Barras';
+import {BotaoCentral} from '../Objects/BotaoCentral'
 
 export class CenaQuarto extends Phaser.Scene{
 
@@ -11,11 +11,16 @@ export class CenaQuarto extends Phaser.Scene{
     interfaceHelper: InterfaceHelper;
     SpritePocoyoQuarto: Phaser.GameObjects.Sprite;
     botaoDespertador: BotaoCentral;
+    dataFase: parametrosProximaFase;
 
     constructor(){
         super({
             key: 'CenaQuarto'
         })
+    }
+
+    init(data: parametrosProximaFase){
+        this.dataFase = data;
     }
 
     preload(){
@@ -49,7 +54,7 @@ export class CenaQuarto extends Phaser.Scene{
         this.SpritePocoyoQuarto.on('animationcomplete', () =>{
             var animacaoAtual = this.SpritePocoyoQuarto.anims.currentAnim.key
             if(animacaoAtual == 'PocoyoAcordando'){
-                this.scene.start('CenaCozinha')
+                this.scene.start('CenaCozinha', this.dataFase)
             }
         })
         
@@ -63,8 +68,4 @@ export class CenaQuarto extends Phaser.Scene{
     update(){
           
     }
-
-    
-
-
 }

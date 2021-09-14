@@ -38,3 +38,4 @@ Para que o Phaser possa rodar sem problemas com requisitos de segurança do Cors
 - Jogue a pasta dist para o diretório: "C:\xampp\htdocs"
 - No navegador, utilize esta url: "http://localhost/dist/"
 
+#### Pronto, agora divirta-se!

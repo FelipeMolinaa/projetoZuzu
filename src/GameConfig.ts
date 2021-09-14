@@ -2,11 +2,12 @@ import Phaser from "phaser"
 import { CenaQuarto } from "./scenes/CenaQuarto"
 import {CenaCozinha} from './scenes/CenasCozinha/CenaCozinha'
 import {CenaJogoCozinha} from './scenes/CenasCozinha/CenaJogoCozinha'
+import {CenaMenu} from './scenes/CenaMenu'
 
 export const Parametros = {
     tela: {
         altura: 1200,
-        largura: 850,
+        largura: 800,
     },
     barra:{
         paddingVertical: 20,
@@ -25,14 +26,21 @@ export const Parametros = {
 
 export const config: Phaser.Types.Core.GameConfig= {
     type: Phaser.AUTO,
-    title: 'ProjetoZuzu',
+    title: 'AcordaPocoyo',
     width: Parametros.tela.largura,
     height: Parametros.tela.altura,
     backgroundColor: '#fff',
+    scale:{
+        parent: 'jogo',
+        mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+        width: 800,
+        height: 1200,
+    },
     scene: [
-        CenaQuarto,
-        CenaCozinha,
         CenaJogoCozinha,
+        CenaCozinha,
+        CenaMenu,
+        CenaQuarto,
     ],
 
     physics:{
@@ -40,4 +48,9 @@ export const config: Phaser.Types.Core.GameConfig= {
         arcade:{
         }
     },
+}
+
+export interface parametrosProximaFase{
+    dificuldade: number,
+    minigameCozinha?: boolean
 }
