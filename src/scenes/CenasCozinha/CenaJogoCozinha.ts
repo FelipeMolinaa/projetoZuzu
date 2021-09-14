@@ -9,7 +9,7 @@ export class CenaJogoCozinha extends Phaser.Scene{
     velocidadeFruta = 300;
     pontos = 0;
     jogoPausado = true;
-    tempoDefault = 2;
+    tempoDefault = 60;
     
     coracoes: Phaser.GameObjects.Group;
     frutas: Phaser.Physics.Arcade.Group;
@@ -87,7 +87,6 @@ export class CenaJogoCozinha extends Phaser.Scene{
             this.cestoSFundo = this.physics.add.sprite(this.cesto.x, this.cesto.y, 'cestoSFundo').setOrigin(0).setScale(this.scaleCesta).setCollideWorldBounds(true);
             this.coletorDeFrutas = this.add.rectangle(this.cesto.x + 20, this.cesto.y + 50, this.cesto.width - 60, 1).setOrigin(0)
             this.physics.add.existing(this.coletorDeFrutas)
-            // this.geraVida();
 
             //@ts-ignore
             this.coletorDeFrutas.body.collideWorldBounds = true
@@ -151,9 +150,6 @@ export class CenaJogoCozinha extends Phaser.Scene{
             this.geraFrutas.destroy();
             this.incrementaTempo.destroy();
             textoTempo.destroy();
-            this.coracoes.getChildren().forEach(coracao =>{
-                coracao.destroy()
-            });
         })
     }
 
@@ -259,21 +255,4 @@ export class CenaJogoCozinha extends Phaser.Scene{
             this.emitter.emit('JogoPausado')
         }
     }
-
-    geraVida(){
-        var ultimaPosicaoCoracao = 50;
-        this.coracoes = this.add.group();
-        for(var i = 1; i <= 3; i++){
-            var coracao = this.add.sprite(ultimaPosicaoCoracao, 200, 'coracao').setScale(0);
-            this.coracoes.createMultiple({key: 'coracao', repeat: 2})
-            ultimaPosicaoCoracao = ultimaPosicaoCoracao + coracao.width + 10
-        }
-
-        console.log(this.coracoes)
-    }
-
-    decrementaVida(){
-        
-    }
-    
 }

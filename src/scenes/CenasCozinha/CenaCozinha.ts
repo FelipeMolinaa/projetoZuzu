@@ -54,7 +54,8 @@ export class CenaCozinha extends Phaser.Scene{
         this.interfaceHelper.grupoDeBarras[3].setBarraTamanho(140)
 
         if(!this.dataFase.minigameCozinha){
-            this.add.sprite(Parametros.tela.largura /2, 600 , 'SpriteSheetCozinhaInicial').setScale(1).play('animacaoCozinhaInicial');
+            var animacao = this.add.sprite(Parametros.tela.largura /2, 600 , 'SpriteSheetCozinhaInicial').setScale(1).play('animacaoCozinhaInicial');
+    
         }else{
             console.log("animacao final")
             //animação final

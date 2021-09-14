@@ -37,9 +37,9 @@ export const config: Phaser.Types.Core.GameConfig= {
         height: 1200,
     },
     scene: [
+        CenaMenu,
         CenaJogoCozinha,
         CenaCozinha,
-        CenaMenu,
         CenaQuarto,
     ],
 

@@ -1,0 +1,110 @@
+/* Paleta de Cores */
+/* Cinza: #f7f7f7 */
+/* Amarelo: #fdbe00 */
+/* Vermelho: #ff0027 */
+/* Roxo: #5d3491 */
+/* Azul: #038ac9 */
+/* Mostarda: #c7b700 */
+/* Laranja: #fe631e */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis */
+html {
+    --cor-laranja: #fe631e;
+    --cor-azul: #038ac9;
+}
+
+@font-face {
+    font-family: 'pocoyo-tv';
+    src: url('../fonts/POCOYOTV.ttf');
+}
+
+/* Estrutura */
+.bordaExemplo {
+    border: 1px solid #f00;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+}
+
+/* campo esquerda */
+.campoEsquerda {
+    width: 40%;
+    height:100vh;
+}
+
+header {
+    background-color: #f7f7f7;
+    padding: 10px;
+    height: 20%;
+}
+
+.campoManual {
+    padding: 20px;
+    background-color: var(--cor-laranja);
+    height: 60%;
+
+}
+
+footer {
+    background-color: #f7f7f7;
+    padding: 10px;
+    height: 20%;
+}
+
+/* campo jogo */
+.campoJogo {
+    width: 60%;
+    height:100vh;
+    padding: 20px;
+    background-color: var(--cor-azul);
+    border: 1px solid gray;
+}
+
+/* campo direita */
+.campoDireita {
+    width: 20%;
+    height:100vh;
+}
+
+/* Letras */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 30px;
+    font-family: 'Baloo 2', Arial, Helvetica, sans-serif;
+}
+
+p {
+    text-align: left;
+    font-size: 22px;
+    margin-bottom: 20px;
+    line-height: 30px;
+    font-family: 'Baloo 2', Arial, Helvetica, sans-serif;
+}
+
+/* Imagens */
+#logo {
+    height: 100%;
+}
+
+#modelo_jogo {
+    height: 100%;
+    border: 5px inset var(--cor-laranja);
+    border-radius: 5px;
+}
+
+#teclas {
+    height: 40px;
+}
+

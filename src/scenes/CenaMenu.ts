@@ -15,13 +15,16 @@ export class CenaMenu extends Phaser.Scene{
 
     preload(){
         this.load.image('botaoSprite', './src/assets/sprites/botao.png');
+        this.load.image('imagemMenu', './src/assets/sprites/imagemMenu.jpg');
         this.load.image('logoAcordaPocoyo', './src/assets/sprites/acordaPocoyoLogo.png');
         this.popUp = new PopUp(this, undefined)
     }
 
     create(){
         var logo = this.add.image(Parametros.tela.largura /2, 150, 'logoAcordaPocoyo');
-        this.botaoJogar = new Botao(this, 0x22CA47, Parametros.tela.largura / 2, Parametros.tela.altura / 2 + 300, "jogar", ()=>{
+
+        var logo = this.add.image(Parametros.tela.largura /2, 540, 'imagemMenu').setScale(1.5);
+        this.botaoJogar = new Botao(this, 0x22CA47, Parametros.tela.largura / 2, Parametros.tela.altura - 200, "jogar", ()=>{
             this.carregaPopUp();
         });
         // this.scene.start('CenaQuarto')
