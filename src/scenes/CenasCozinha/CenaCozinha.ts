@@ -11,6 +11,7 @@ export class CenaCozinha extends Phaser.Scene{
     botaoCentral: BotaoCentral;
     dataFase: parametrosProximaFase;
     cenaInicio: Phaser.GameObjects.Sprite;
+    spriteAnimacaoCozinha: Phaser.GameObjects.Sprite;
 
     constructor(){
         super({
@@ -29,37 +30,47 @@ export class CenaCozinha extends Phaser.Scene{
     }
 
     create(){
-        
-
         this.anims.create({
             key: 'animacaoCozinhaInicial',
             frames: this.anims.generateFrameNumbers('SpriteSheetCozinhaInicial', { start: 0, end: 102, first: 0 }),
             frameRate: 10,
-            repeat: -1
+            repeat: 0
         });
 
         this.interfaceHelper.GeraInterface();
 
-        this.botaoCentral = new BotaoCentral(this, 280, 'botaoCentralCozinha');
+        // this.botaoCentral = new BotaoCentral(this, 280, 'botaoCentralCozinha');
 
-        
-
-        this.botaoCentral.onClick(()=>{
-            this.scene.start('CenaJogoCozinha', this.dataFase);
-        }, false)
+        // this.botaoCentral.onClick(()=>{
+        // }, false)
 
         this.interfaceHelper.grupoDeBarras[0].setBarraTamanho(20)
         this.interfaceHelper.grupoDeBarras[1].setBarraTamanho(40)
         this.interfaceHelper.grupoDeBarras[2].setBarraTamanho(100)
         this.interfaceHelper.grupoDeBarras[3].setBarraTamanho(140)
 
+        this.spriteAnimacaoCozinha = this.add.sprite(Parametros.tela.largura /2, 600 , 'SpriteSheetCozinhaInicial').setScale(1)
         if(!this.dataFase.minigameCozinha){
-            var animacao = this.add.sprite(Parametros.tela.largura /2, 600 , 'SpriteSheetCozinhaInicial').setScale(1).play('animacaoCozinhaInicial');
-    
+            this.spriteAnimacaoCozinha.play('animacaoCozinhaInicial');
         }else{
             console.log("animacao final")
             //animação final
         }
+
+        // console.log(this.spriteAnimacaoCozinha.anims.currentAnim.key)
+        this.spriteAnimacaoCozinha.on('animationcomplete', () =>{
+            var animacaoAtual = this.spriteAnimacaoCozinha.anims.currentAnim.key
+            console.log(animacaoAtual)
+            if(animacaoAtual == 'animacaoCozinhaInicial'){
+                console.log("teste5")
+                this.scene.start('CenaJogoCozinha', this.dataFase);
+            }
+            else if(animacaoAtual == 'animacaoCozinhaFinal'){
+                // proxima fase
+                // this.scene.start('CenaJogoCozinha', this.dataFase);
+
+            }
+        })
     }
 
     update(){

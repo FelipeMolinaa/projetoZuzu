@@ -19,6 +19,13 @@ export const Parametros = {
         ],
         tamanhoDaBarra: 150
     },
+    jogoCozinha:{
+        velocidadeCesto: 400,
+        tempoSurgimentoFruta: 2000,
+        velocidadeFruta: 300,
+        tempoDefault: 45,
+        tamanoCesta: 0.9
+    },
     botaoCentral:{
         tamanho: 150
     }
@@ -37,10 +44,12 @@ export const config: Phaser.Types.Core.GameConfig= {
         height: 1200,
     },
     scene: [
-        CenaMenu,
-        CenaJogoCozinha,
         CenaCozinha,
+
         CenaQuarto,
+        CenaMenu,
+        
+        CenaJogoCozinha,
     ],
 
     physics:{

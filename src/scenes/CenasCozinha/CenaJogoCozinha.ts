@@ -3,13 +3,13 @@ import { Parametros, parametrosProximaFase } from "../../GameConfig";
 import {PopUp} from '../../Objects/PopUp'
 
 export class CenaJogoCozinha extends Phaser.Scene{
-    scaleCesta = 0.9
+    tamanoCesta = 0.9
     velocidadeCesto = 400;
     tempoSurgimentoFruta = 2000;
     velocidadeFruta = 300;
     pontos = 0;
     jogoPausado = true;
-    tempoDefault = 60;
+    tempoDefault = 45;
     
     coracoes: Phaser.GameObjects.Group;
     frutas: Phaser.Physics.Arcade.Group;
@@ -83,8 +83,9 @@ export class CenaJogoCozinha extends Phaser.Scene{
             this.pontos = 0;
             this.jogoPausado = false;
             this.popUp.limpaPopUp();
-            this.cesto = this.physics.add.sprite(100, Parametros.tela.altura - 200, 'cesto').setOrigin(0).setScale(this.scaleCesta).setCollideWorldBounds(true);
-            this.cestoSFundo = this.physics.add.sprite(this.cesto.x, this.cesto.y, 'cestoSFundo').setOrigin(0).setScale(this.scaleCesta).setCollideWorldBounds(true);
+            var tamanhoCesta = Parametros.jogoCozinha.tamanoCesta
+            this.cesto = this.physics.add.sprite(100, Parametros.tela.altura - 200, 'cesto').setOrigin(0).setScale(tamanhoCesta).setCollideWorldBounds(true);
+            this.cestoSFundo = this.physics.add.sprite(this.cesto.x, this.cesto.y, 'cestoSFundo').setOrigin(0).setScale(tamanhoCesta).setCollideWorldBounds(true);
             this.coletorDeFrutas = this.add.rectangle(this.cesto.x + 20, this.cesto.y + 50, this.cesto.width - 60, 1).setOrigin(0)
             this.physics.add.existing(this.coletorDeFrutas)
 

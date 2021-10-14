@@ -53,6 +53,7 @@ export class CenaQuarto extends Phaser.Scene{
 
         this.SpritePocoyoQuarto.on('animationcomplete', () =>{
             var animacaoAtual = this.SpritePocoyoQuarto.anims.currentAnim.key
+            console.log(animacaoAtual)
             if(animacaoAtual == 'PocoyoAcordando'){
                 this.scene.start('CenaCozinha', this.dataFase)
             }

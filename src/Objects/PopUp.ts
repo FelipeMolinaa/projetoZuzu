@@ -65,9 +65,8 @@ export class PopUp{
 
     limpaPopUp() {
         this.fundo.destroy();
-        this.titulo.destroy();
-
         this.botoes.forEach((botao)=>{
+            botao.depth = -10
             botao.destroy();
             botao.texto.destroy();
         })
